@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bases de Datos y Registros | NovaDigital</title>
+    <link rel="stylesheet" href="../static/css/estilos.css">
+</head>
+<body class="landing-page-body bdr-page">
+
+    <nav class="navbar navbar-flotante landing-nav" id="navbar">
+        <div class="nav-brand">
+            <a href="index.html#inicio" class="logo">NovaDigital</a>
+        </div>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-contenido" id="nav-contenido">
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios <span class="flecha">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="landing-pages.html">Landing pages</a>
+                        <a href="servicios.html#sitios-empresariales">Sitios empresariales</a>
+                        <a href="servicios.html#tiendas-linea">Tiendas en línea</a>
+                        <a href="sistemas-web-medida.html">Sistemas a medida</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="servicios.html#automatizacion">Automatización <span class="flecha">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="formularios-inteligentes.html#formularios">Formularios inteligentes</a>
+                        <a href="DB-registros.html#bases-datos">Bases de datos y registros</a>
+                        <a href="paneles-administrativos.html#paneles">Paneles administrativos</a>
+                        <a href="automatizacion-procesos.html#procesos">Automatización de procesos</a>
+                        <a href="integraciones-digitales.html#integraciones">Integraciones digitales</a>
+                    </div>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="contacto.html" class="btn btn-nav">Cotizar proyecto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="bdr-hero">
+        <div class="bdr-hero-inner">
+            <div class="bdr-copy">
+                <div class="hero-badge"><span></span>Bases de datos y registros</div>
+                <h1>Organiza tu información en una <span>plataforma clara, útil y profesional</span></h1>
+                <p>
+                    Creamos sistemas para registrar, consultar, editar y administrar información
+                    importante de tu negocio desde una interfaz visual, ordenada y fácil de usar.
+                </p>
+
+                <div class="hero-btns">
+                    <a href="contacto.html" class="btn-primary">Solicitar cotización</a>
+                    <a href="#visual" class="btn-ghost">Ver sistema ↓</a>
+                </div>
+            </div>
+
+            <div class="bdr-visual reveal-r" id="visual">
+                <div class="bdr-window bdr-main-window">
+                    <div class="bdr-window-bar">
+                        <div class="bdr-window-dots"><span></span><span></span><span></span></div>
+                        <div class="bdr-window-title">Panel de registros</div>
+                    </div>
+
+                    <div class="bdr-window-body">
+                        <div class="bdr-toolbar">
+                            <div class="bdr-search"></div>
+                            <div class="bdr-toolbar-actions">
+                                <span class="bdr-btn ghost">Filtrar</span>
+                                <span class="bdr-btn ghost">Exportar</span>
+                                <span class="bdr-btn solid">Nuevo registro</span>
+                            </div>
+                        </div>
+
+                        <div class="bdr-table-card">
+                            <div class="bdr-table-head">
+                                <span>ID</span>
+                                <span>Nombre</span>
+                                <span>Área</span>
+                                <span>Estatus</span>
+                                <span>Acciones</span>
+                            </div>
+
+                            <div class="bdr-table-row">
+                                <span>#0012</span>
+                                <span>Juan Pérez</span>
+                                <span>Ventas</span>
+                                <span><em class="status active">Activo</em></span>
+                                <span class="acciones">
+                                    <button>Ver</button>
+                                    <button>Editar</button>
+                                </span>
+                            </div>
+
+                            <div class="bdr-table-row">
+                                <span>#0013</span>
+                                <span>María López</span>
+                                <span>Operación</span>
+                                <span><em class="status pending">Pendiente</em></span>
+                                <span class="acciones">
+                                    <button>Ver</button>
+                                    <button>Editar</button>
+                                </span>
+                            </div>
+
+                            <div class="bdr-table-row">
+                                <span>#0014</span>
+                                <span>Carlos Ruiz</span>
+                                <span>Soporte</span>
+                                <span><em class="status active">Activo</em></span>
+                                <span class="acciones">
+                                    <button>Ver</button>
+                                    <button>Editar</button>
+                                </span>
+                            </div>
+
+                            <div class="bdr-table-row">
+                                <span>#0015</span>
+                                <span>Laura Sánchez</span>
+                                <span>Administración</span>
+                                <span><em class="status inactive">Inactivo</em></span>
+                                <span class="acciones">
+                                    <button>Ver</button>
+                                    <button>Editar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bdr-window bdr-side-window">
+                    <div class="bdr-window-bar">
+                        <div class="bdr-window-dots"><span></span><span></span><span></span></div>
+                        <div class="bdr-window-title">Resumen</div>
+                    </div>
+
+                    <div class="bdr-mini-stats">
+                        <div class="bdr-stat">
+                            <strong>248</strong>
+                            <span>Registros</span>
+                        </div>
+                        <div class="bdr-stat">
+                            <strong>18</strong>
+                            <span>Nuevos hoy</span>
+                        </div>
+                        <div class="bdr-stat">
+                            <strong>4</strong>
+                            <span>Filtros activos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bdr-window bdr-activity-window">
+                    <div class="bdr-window-bar">
+                        <div class="bdr-window-dots"><span></span><span></span><span></span></div>
+                        <div class="bdr-window-title">Actividad reciente</div>
+                    </div>
+
+                    <div class="bdr-activity-list">
+                        <div class="bdr-activity-item">
+                            <strong>Registro actualizado</strong>
+                            <span>Juan Pérez · hace 2 min</span>
+                        </div>
+
+                        <div class="bdr-activity-item">
+                            <strong>Nuevo cliente agregado</strong>
+                            <span>María López · hace 8 min</span>
+                        </div>
+
+                        <div class="bdr-activity-item">
+                            <strong>Filtro aplicado</strong>
+                            <span>Área: Ventas · hace 12 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION 2 -->
+    <section class="bloque bdr-section-light">
+        <div class="inner">
+            <div class="landing-text-center reveal">
+                <p class="eyebrow landing-eyebrow-center">¿Qué recibe tu negocio?</p>
+                <h2 class="titulo">Un sistema donde <span>la información sí se puede trabajar</span></h2>
+                <p class="subtitulo landing-subtitulo-center">
+                    No se trata solo de guardar datos, sino de consultarlos, filtrarlos, editarlos y aprovecharlos mejor.
+                </p>
+            </div>
+
+            <div class="bdr-grid-showcase">
+                <article class="bdr-card reveal">
+                    <div class="bdr-card-top">
+                        <h3>Tabla de registros</h3>
+                        <span class="tag">Vista principal</span>
+                    </div>
+                    <p>Listado claro de información con columnas, estatus, búsqueda y acciones rápidas.</p>
+                </article>
+
+                <article class="bdr-card reveal">
+                    <div class="bdr-card-top">
+                        <h3>Botones de acción</h3>
+                        <span class="tag">Interacción</span>
+                    </div>
+                    <p>Botones como “Nuevo”, “Editar”, “Eliminar”, “Ver”, “Filtrar” o “Exportar”.</p>
+                </article>
+
+                <article class="bdr-card reveal">
+                    <div class="bdr-card-top">
+                        <h3>Formulario de captura</h3>
+                        <span class="tag">Alta de datos</span>
+                    </div>
+                    <p>Campos ordenados para registrar información de forma limpia y profesional.</p>
+                </article>
+
+                <article class="bdr-card reveal">
+                    <div class="bdr-card-top">
+                        <h3>Filtros y búsqueda</h3>
+                        <span class="tag">Consulta</span>
+                    </div>
+                    <p>Encuentra registros por nombre, fecha, categoría, estatus o cualquier criterio útil.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION 3 -->
+    <section class="bloque">
+        <div class="inner bdr-split-layout">
+            <div class="bdr-split-copy reveal-l">
+                <p class="eyebrow">Aplicaciones</p>
+                <h2 class="titulo">Puede adaptarse a <span>muchos tipos de registros</span></h2>
+                <p class="subtitulo bdr-spacing">
+                    Dependiendo del giro de tu negocio, el sistema puede servir para administrar clientes,
+                    pedidos, inventario, expedientes, solicitudes, citas, contratos, servicios o cualquier otro registro importante.
+                </p>
+
+                <div class="bdr-use-list">
+                    <div class="use-item">
+                        <strong>Clientes</strong>
+                        <span>Base de datos de prospectos, clientes activos e historial.</span>
+                    </div>
+                    <div class="use-item">
+                        <strong>Inventario</strong>
+                        <span>Registro de productos, existencias, movimientos y control.</span>
+                    </div>
+                    <div class="use-item">
+                        <strong>Solicitudes</strong>
+                        <span>Seguimiento de tickets, requerimientos o formularios internos.</span>
+                    </div>
+                    <div class="use-item">
+                        <strong>Expedientes</strong>
+                        <span>Información organizada por persona, empresa o caso.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bdr-split-visual reveal-r">
+    <div class="bdr-browser">
+        <div class="bdr-browser-top">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="bdr-browser-content">
+            <div class="bdr-sidebar">
+                <div class="line"></div>
+                <div class="line short"></div>
+                <div class="line"></div>
+                <div class="line short"></div>
+                <div class="line"></div>
+            </div>
+
+            <div class="bdr-content-area">
+                <div class="bdr-content-head">
+                    <div class="bdr-content-title-group">
+                        <h4>Base de datos de clientes</h4>
+                        <p>Consulta, filtra y administra registros</p>
+                    </div>
+
+                    <div class="buttons-block">
+                        <button class="bdr-mini-btn ghost">Filtrar</button>
+                        <button class="bdr-mini-btn active">Nuevo registro</button>
+                    </div>
+                </div>
+
+                <div class="bdr-summary-row">
+                    <div class="bdr-summary-box">
+                        <strong>248</strong>
+                        <span>Registros totales</span>
+                    </div>
+                    <div class="bdr-summary-box">
+                        <strong>18</strong>
+                        <span>Nuevos hoy</span>
+                    </div>
+                </div>
+
+                <div class="bdr-table-preview">
+                    <div class="bdr-table-preview-head">
+                        <span>ID</span>
+                        <span>Nombre</span>
+                        <span>Área</span>
+                        <span>Estatus</span>
+                        <span>Acciones</span>
+                    </div>
+
+                    <div class="bdr-table-preview-row">
+                        <span>#0012</span>
+                        <span>Juan Pérez</span>
+                        <span>Ventas</span>
+                        <span><em class="status active">Activo</em></span>
+                        <span class="bdr-actions-inline">
+                            <button>Ver</button>
+                            <button>Editar</button>
+                        </span>
+                    </div>
+
+                    <div class="bdr-table-preview-row">
+                        <span>#0013</span>
+                        <span>María López</span>
+                        <span>Operación</span>
+                        <span><em class="status pending">Pendiente</em></span>
+                        <span class="bdr-actions-inline">
+                            <button>Ver</button>
+                            <button>Editar</button>
+                        </span>
+                    </div>
+
+                    <div class="bdr-table-preview-row">
+                        <span>#0014</span>
+                        <span>Carlos Ruiz</span>
+                        <span>Soporte</span>
+                        <span><em class="status active">Activo</em></span>
+                        <span class="bdr-actions-inline">
+                            <button>Ver</button>
+                            <button>Editar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- SECCION 4 -->
+    <section class="bloque bg-dark">
+        <div class="inner bdr-dark-layout">
+            <div class="bdr-dark-copy reveal-l">
+                <p class="eyebrow landing-eyebrow-center">Ventajas</p>
+                <h2 class="titulo">Lo que ganas con <span>bases de datos mejor estructuradas</span></h2>
+                <p class="subtitulo landing-subtitulo-dark bdr-spacing">
+                    Cuando la información está bien organizada, también mejora la operación diaria del negocio.
+                </p>
+            </div>
+
+            <div class="bdr-dark-panels reveal-r">
+                <div class="dark-panel">
+                    <strong>Más orden</strong>
+                    <p>Todo queda en un mismo sistema, en lugar de hojas, chats o archivos dispersos.</p>
+                </div>
+
+                <div class="dark-panel">
+                    <strong>Más rapidez</strong>
+                    <p>Consultar, editar o localizar información se vuelve mucho más sencillo.</p>
+                </div>
+
+                <div class="dark-panel">
+                    <strong>Más control</strong>
+                    <p>Sabes qué información existe, quién la usa y cómo se actualiza.</p>
+                </div>
+
+                <div class="dark-panel">
+                    <strong>Más profesionalismo</strong>
+                    <p>Tu negocio trabaja con herramientas digitales más claras y funcionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="inner reveal">
+            <h2>¿Quieres una base de datos útil para tu negocio?</h2>
+            <p>
+                Podemos ayudarte a diseñar una plataforma visual, clara y profesional para registrar
+                y administrar la información que realmente importa en tu operación.
+            </p>
+            <a href="contacto.html" class="btn-white">Solicitar cotización →</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 NovaDigital — Todos los derechos reservados</p>
+    </footer>
+
+    <script src="../static/js/main.js"></script>
+    <script>
+        const revealEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

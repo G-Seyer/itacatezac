@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | NovaDigital</title>
+    <link rel="stylesheet" href="../static/css/estilos.css">
+</head>
+<body>
+
+    <header class="subhero">
+        <nav class="navbar navbar-flotante" id="navbar">
+            <div class="nav-brand">
+                <a href="index.html#inicio" class="logo">NovaDigital</a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-contenido" id="nav-contenido">
+                <ul class="nav-links">
+                    <li><a href="index.html#inicio">Inicio</a></li>
+
+                    <li class="dropdown">
+                        <a href="servicios.html">Servicios <span class="flecha">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="landing-pages.html">Landing pages</a>
+                            <a href="sitios-empresariales.html">Sitios web empresariales</a>
+                            <a href="tiendas-en-linea.html">Tiendas en línea</a>
+                            <a href="sistemas-a-medida.html#sistemas-medida">Sistemas web a medida</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="servicios.html#automatizacion">Automatización <span class="flecha">▼</span></a>
+                        <div class="dropdown-menu">
+                            <a href="formularios-inteligentes.html#formularios">Formularios inteligentes</a>
+                            <a href="DB-registros.html#bases-datos">Bases de datos y registros</a>
+                            <a href="paneles-administrativos.html#paneles">Paneles administrativos</a>
+                            <a href="automatizacion-procesos.html#procesos">Automatización de procesos</a>
+                            <a href="integraciones-digitales.html#integraciones">Integraciones digitales</a>
+                        </div>
+                    </li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="contacto.html" class="btn btn-nav">Cotizar proyecto</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="subhero-contenido">
+            <h1>Hablemos de tu proyecto</h1>
+            <p>
+                Cuéntanos qué necesitas y con gusto te orientamos sobre la mejor solución
+                para tu negocio, empresa o emprendimiento.
+            </p>
+        </section>
+    </header>
+
+    <main>
+        <section class="contacto">
+            <h2>Solicita una cotización</h2>
+            <p>
+                Completa el formulario y más adelante podremos conectarlo con un backend
+                para recibir solicitudes reales, almacenarlas en una base de datos y darles seguimiento.
+            </p>
+
+            <form style="max-width: 700px; margin: 35px auto; display: flex; flex-direction: column; gap: 16px;">
+                <input type="text" placeholder="Tu nombre completo">
+                <input type="email" placeholder="Tu correo electrónico">
+                <input type="text" placeholder="Nombre de tu negocio o proyecto">
+                <input type="text" placeholder="Teléfono o medio de contacto opcional">
+                <input type="text" placeholder="¿Qué tipo de servicio te interesa?">
+                <textarea rows="6" placeholder="Cuéntanos qué tipo de sitio web, sistema o automatización necesitas"></textarea>
+                <button type="submit" class="btn btn-principal">Enviar solicitud</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 NovaDigital. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
