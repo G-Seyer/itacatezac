@@ -740,7 +740,65 @@ footer{background:var(--tinta);padding:38px 24px 30px;text-align:center;}
 .share-btn{flex:1;border:none;border-radius:3px;background:var(--agave);color:var(--arena);padding:11px 10px;font-family:var(--f-ui);font-size:8px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;cursor:pointer;}
 .share-btn.alt{background:none;border:1px solid var(--humo);color:var(--piedra);}
 .share-btn:active{transform:scale(.97);}
+/* AJUSTES MÓVIL: NAV FIJA + COMBOS DENTRO DEL MARCO */
+body{
+  padding-top:50px;
+}
 
+.nav{
+  position:fixed !important;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+
+.nav-logo{
+  min-width:max-content;
+}
+
+.nav-btn{
+  flex:0 0 auto;
+  padding:0 10px;
+}
+
+section{
+  scroll-margin-top:60px;
+}
+
+#s-combos{
+  overflow:hidden;
+  padding-left:16px;
+  padding-right:16px;
+}
+
+.cg{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+
+.cc{
+  width:100%;
+  max-width:100%;
+}
+
+.cc > div:nth-child(2){
+  min-width:0;
+}
+
+.cc-nom,
+.cc-con{
+  overflow-wrap:anywhere;
+}
+
+#cart-fab{
+  bottom:calc(18px + env(safe-area-inset-bottom));
+  right:14px;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
