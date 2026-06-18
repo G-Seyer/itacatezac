@@ -4,202 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meseros · Itacate Zacatecas</title>
+
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
+
 <style>
-:root{
-  --tinta:#1C1008;
-  --arena:#F0E6D3;
-  --cantera:#C4956A;
-  --agave:#2D4A30;
-  --crema:#FAF5EE;
-  --humo:#E8DDD0;
-  --piedra:#7A6248;
-  --rojo:#8B2E1A;
-}
+:root{--tinta:#1C1008;--arena:#F0E6D3;--cantera:#C4956A;--agave:#2D4A30;--crema:#FAF5EE;--humo:#E8DDD0;--piedra:#7A6248;--rojo:#8B2E1A;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:var(--crema);
-  color:var(--tinta);
-}
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:var(--tinta);
-  color:var(--arena);
-  padding:14px 16px;
-  border-bottom:2px solid var(--cantera);
-}
-h1{font-size:18px;line-height:1.1;}
-header p{font-size:11px;color:rgba(240,230,211,.55);margin-top:3px;}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--crema);color:var(--tinta);}
+header{position:sticky;top:0;z-index:50;background:var(--tinta);color:var(--arena);padding:14px 16px;border-bottom:2px solid var(--cantera);}
+h1{font-size:18px;line-height:1.1;} header p{font-size:11px;color:rgba(240,230,211,.55);margin-top:3px;}
 main{padding:14px;max-width:900px;margin:0 auto 70px;}
-.tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:14px;
-  overflow-x:auto;
-}
-.tab{
-  border:1px solid var(--humo);
-  background:#fff;
-  color:var(--piedra);
-  padding:10px 12px;
-  border-radius:8px;
-  font-size:12px;
-  font-weight:700;
-  white-space:nowrap;
-  cursor:pointer;
-}
-.tab.on{
-  background:var(--agave);
-  color:var(--arena);
-  border-color:var(--agave);
-}
-.panel{display:none;}
-.panel.on{display:block;}
-.card{
-  background:#fff;
-  border:1px solid var(--humo);
-  border-radius:10px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 8px 24px rgba(28,16,8,.06);
-}
-.card h2{font-size:16px;margin-bottom:8px;}
-.muted{font-size:12px;color:var(--piedra);line-height:1.45;}
-.btn{
-  width:100%;
-  border:none;
-  border-radius:8px;
-  padding:12px;
-  font-weight:800;
-  letter-spacing:.5px;
-  cursor:pointer;
-  margin-top:10px;
-}
-.btn-primary{background:var(--agave);color:var(--arena);}
-.btn-secondary{background:var(--humo);color:var(--tinta);}
-.btn-danger{background:var(--rojo);color:#fff;}
-#reader{
-  width:100%;
-  max-width:420px;
-  margin:12px auto 0;
-  overflow:hidden;
-  border-radius:10px;
-}
-.order-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:flex-start;
-  border-bottom:1px solid var(--humo);
-  padding-bottom:8px;
-  margin-bottom:8px;
-}
-.folio{font-weight:900;font-size:14px;}
-.mesa{
-  background:var(--tinta);
-  color:var(--cantera);
-  padding:5px 8px;
-  border-radius:6px;
-  font-weight:900;
-  font-size:12px;
-}
-.items{margin:8px 0;}
-.item{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  font-size:13px;
-  padding:6px 0;
-  border-bottom:1px dashed var(--humo);
-}
-.total{
-  display:flex;
-  justify-content:space-between;
-  font-size:18px;
-  font-weight:900;
-  margin-top:10px;
-}
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:10px;
-}
-.actions .btn{margin-top:0;}
-input,select{
-  width:100%;
-  padding:12px;
-  border-radius:8px;
-  border:1px solid var(--humo);
-  font-size:16px;
-  margin-top:8px;
-  background:#fff;
-}
-.empty{
-  text-align:center;
-  padding:28px 18px;
-  color:var(--piedra);
-  font-size:13px;
-}
-.resume-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.stat{
-  background:#fff;
-  border:1px solid var(--humo);
-  border-radius:10px;
-  padding:14px;
-}
-.stat b{
-  display:block;
-  font-size:24px;
-  color:var(--agave);
-}
-.product-row{
-  display:flex;
-  justify-content:space-between;
-  padding:8px 0;
-  border-bottom:1px solid var(--humo);
-  font-size:13px;
-}
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:18px;
-  transform:translateX(-50%) translateY(20px);
-  background:var(--agave);
-  color:var(--arena);
-  padding:10px 16px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  z-index:100;
-  white-space:nowrap;
-}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-@media(min-width:720px){
-  main{padding:22px;}
-  .orders-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-}
+.tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;}
+.tab{border:1px solid var(--humo);background:#fff;color:var(--piedra);padding:10px 12px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer;}
+.tab.on{background:var(--agave);color:var(--arena);border-color:var(--agave);}
+.panel{display:none}.panel.on{display:block}
+.card{background:#fff;border:1px solid var(--humo);border-radius:10px;padding:14px;margin-bottom:12px;box-shadow:0 8px 24px rgba(28,16,8,.06);}
+.card h2{font-size:16px;margin-bottom:8px}.muted{font-size:12px;color:var(--piedra);line-height:1.45;}
+.btn{width:100%;border:none;border-radius:8px;padding:12px;font-weight:800;letter-spacing:.5px;cursor:pointer;margin-top:10px;}
+.btn-primary{background:var(--agave);color:var(--arena)}.btn-secondary{background:var(--humo);color:var(--tinta)}.btn-danger{background:var(--rojo);color:#fff}
+#reader{width:100%;max-width:420px;margin:12px auto 0;overflow:hidden;border-radius:10px;}
+.order-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;border-bottom:1px solid var(--humo);padding-bottom:8px;margin-bottom:8px;}
+.folio{font-weight:900;font-size:14px}.mesa{background:var(--tinta);color:var(--cantera);padding:5px 8px;border-radius:6px;font-weight:900;font-size:12px;}
+.items{margin:8px 0}.item{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--humo);}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:900;margin-top:10px;}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.actions .btn{margin-top:0;}
+input,select{width:100%;padding:12px;border-radius:8px;border:1px solid var(--humo);font-size:16px;margin-top:8px;background:#fff;}
+.empty{text-align:center;padding:28px 18px;color:var(--piedra);font-size:13px;}
+.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#fff;border:1px solid var(--humo);border-radius:10px;padding:14px}.stat b{display:block;font-size:24px;color:var(--agave);}
+.product-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--humo);font-size:13px;}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(20px);background:var(--agave);color:var(--arena);padding:10px 16px;border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:100;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(min-width:720px){main{padding:22px}.orders-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}}
 </style>
 </head>
 <body>
-<header>
-  <h1>Itacate Zacatecas · Meseros</h1>
-  <p>Escaneo de pedidos, pendientes, entregados y corte del día</p>
-</header>
-
+<header><h1>Itacate Zacatecas · Meseros</h1><p>Escaneo de pedidos, pendientes, entregados y corte del día</p></header>
 <main>
   <div class="tabs">
     <button class="tab on" onclick="showTab('scan',this)">Escanear</button>
@@ -216,294 +57,46 @@ input,select{
       <button class="btn btn-secondary" id="stopBtn" onclick="stopScanner()" style="display:none;">Detener cámara</button>
       <div id="reader"></div>
     </div>
-
     <div class="card" id="previewCard" style="display:none;">
-      <h2>Pedido escaneado</h2>
-      <div id="previewContent"></div>
+      <h2>Pedido escaneado</h2><div id="previewContent"></div>
       <label class="muted" for="mesaInput">Mesa</label>
       <input id="mesaInput" type="number" min="1" placeholder="Ejemplo: 12">
       <button class="btn btn-primary" onclick="saveScannedOrder()">Guardar en pendientes</button>
     </div>
   </section>
-
-  <section id="pending" class="panel">
-    <div id="pendingList"></div>
-  </section>
-
-  <section id="done" class="panel">
-    <div id="doneList"></div>
-  </section>
-
+  <section id="pending" class="panel"><div id="pendingList"></div></section>
+  <section id="done" class="panel"><div id="doneList"></div></section>
   <section id="summary" class="panel">
-    <div class="resume-grid">
-      <div class="stat"><span class="muted">Pedidos entregados</span><b id="sumOrders">0</b></div>
-      <div class="stat"><span class="muted">Venta total</span><b id="sumTotal">$0</b></div>
-    </div>
-    <div class="card" style="margin-top:12px;">
-      <h2>Productos vendidos</h2>
-      <div id="productSummary"></div>
-    </div>
-    <div class="card">
-      <h2>Cierre</h2>
-      <p class="muted">Esto borra los pedidos guardados en este dispositivo. Úsalo al terminar el día.</p>
-      <button class="btn btn-danger" onclick="clearDay()">Cerrar día y borrar pedidos</button>
-    </div>
+    <div class="resume-grid"><div class="stat"><span class="muted">Pedidos entregados</span><b id="sumOrders">0</b></div><div class="stat"><span class="muted">Venta total</span><b id="sumTotal">$0</b></div></div>
+    <div class="card" style="margin-top:12px;"><h2>Productos vendidos</h2><div id="productSummary"></div></div>
+    <div class="card"><h2>Cierre</h2><p class="muted">Esto borra todos los pedidos guardados en Firebase, excepto el documento de prueba.</p><button class="btn btn-danger" onclick="clearDay()">Cerrar día y borrar pedidos</button></div>
   </section>
 </main>
-
 <div class="toast" id="toast"></div>
 
 <script>
-let html5QrCode = null;
-let currentOrder = null;
-
-const STORAGE_KEY = 'itacate_orders_v1';
-
-function money(n){
-  return '$' + Number(n || 0).toLocaleString('es-MX');
-}
-
-function getOrders(){
-  try{
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  }catch(e){
-    return [];
-  }
-}
-
-function setOrders(orders){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
-  renderAll();
-}
-
-function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),1800);
-}
-
-function showTab(id, btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.getElementById(id).classList.add('on');
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  btn.classList.add('on');
-  renderAll();
-}
-
-async function startScanner(){
-  const readerId = 'reader';
-  html5QrCode = new Html5Qrcode(readerId);
-  document.getElementById('startBtn').style.display = 'none';
-  document.getElementById('stopBtn').style.display = 'block';
-
-  try{
-    await html5QrCode.start(
-      { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 250, height: 250 } },
-      onScanSuccess
-    );
-  }catch(err){
-    showToast('No se pudo abrir la cámara');
-    document.getElementById('startBtn').style.display = 'block';
-    document.getElementById('stopBtn').style.display = 'none';
-  }
-}
-
-async function stopScanner(){
-  if(html5QrCode){
-    try{ await html5QrCode.stop(); }catch(e){}
-    html5QrCode.clear();
-    html5QrCode = null;
-  }
-  document.getElementById('startBtn').style.display = 'block';
-  document.getElementById('stopBtn').style.display = 'none';
-}
-
-function onScanSuccess(decodedText){
-  let data = null;
-  try{
-    data = JSON.parse(decodedText);
-  }catch(e){
-    showToast('QR no válido');
-    return;
-  }
-
-  if(!data || data.tipo !== 'itacate_pedido' || !Array.isArray(data.items)){
-    showToast('Este QR no es un pedido');
-    return;
-  }
-
-  currentOrder = data;
-  renderPreview(data);
-  stopScanner();
-}
-
-function renderPreview(order){
-  const box = document.getElementById('previewCard');
-  const content = document.getElementById('previewContent');
-  box.style.display = 'block';
-
-  content.innerHTML = `
-    <div class="order-head">
-      <div>
-        <div class="folio">${escapeHTML(order.folio || 'SIN FOLIO')}</div>
-        <div class="muted">${escapeHTML(order.hora || '')}</div>
-      </div>
-      <div class="mesa">${money(order.total)}</div>
-    </div>
-    <div class="items">
-      ${order.items.map(i=>`
-        <div class="item">
-          <span>${Number(i.qty)}x ${escapeHTML(i.name)}</span>
-          <b>${money(Number(i.price) * Number(i.qty))}</b>
-        </div>
-      `).join('')}
-    </div>
-    <div class="total"><span>Total</span><span>${money(order.total)}</span></div>
-  `;
-}
-
-function saveScannedOrder(){
-  if(!currentOrder) return;
-  const mesa = document.getElementById('mesaInput').value.trim();
-  if(!mesa){
-    showToast('Agrega la mesa');
-    return;
-  }
-
-  const orders = getOrders();
-  const exists = orders.some(o => o.folio === currentOrder.folio);
-  if(exists){
-    showToast('Ese pedido ya está guardado');
-    return;
-  }
-
-  orders.push({
-    id: Date.now(),
-    folio: currentOrder.folio,
-    mesa,
-    items: currentOrder.items,
-    total: Number(currentOrder.total || 0),
-    hora: currentOrder.hora || new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}),
-    estado: 'pendiente',
-    createdAt: new Date().toISOString()
-  });
-
-  setOrders(orders);
-  currentOrder = null;
-  document.getElementById('previewCard').style.display = 'none';
-  document.getElementById('mesaInput').value = '';
-  showToast('Pedido guardado');
-}
-
-function markDone(id){
-  const orders = getOrders();
-  const order = orders.find(o => o.id === id);
-  if(order){
-    order.estado = 'entregado';
-    order.doneAt = new Date().toISOString();
-    setOrders(orders);
-    showToast('Pedido entregado');
-  }
-}
-
-function deleteOrder(id){
-  if(!confirm('¿Eliminar este pedido?')) return;
-  setOrders(getOrders().filter(o => o.id !== id));
-}
-
-function renderAll(){
-  const orders = getOrders();
-  const pending = orders.filter(o => o.estado === 'pendiente');
-  const done = orders.filter(o => o.estado === 'entregado');
-
-  document.getElementById('pendingCount').textContent = pending.length;
-  renderOrders('pendingList', pending, true);
-  renderOrders('doneList', done, false);
-  renderSummary(done);
-}
-
-function renderOrders(targetId, orders, isPending){
-  const target = document.getElementById(targetId);
-  if(!orders.length){
-    target.innerHTML = '<div class="empty">No hay pedidos aquí.</div>';
-    return;
-  }
-
-  target.innerHTML = `<div class="orders-grid">${orders.map(order => `
-    <div class="card">
-      <div class="order-head">
-        <div>
-          <div class="folio">${escapeHTML(order.folio)}</div>
-          <div class="muted">${escapeHTML(order.hora || '')}</div>
-        </div>
-        <div class="mesa">Mesa ${escapeHTML(order.mesa)}</div>
-      </div>
-
-      <div class="items">
-        ${order.items.map(i=>`
-          <div class="item">
-            <span>${Number(i.qty)}x ${escapeHTML(i.name)}</span>
-            <b>${money(Number(i.price) * Number(i.qty))}</b>
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="total">
-        <span>Total</span>
-        <span>${money(order.total)}</span>
-      </div>
-
-      <div class="actions">
-        ${isPending ? `<button class="btn btn-primary" onclick="markDone(${order.id})">Listo</button>` : `<button class="btn btn-secondary" disabled>Entregado</button>`}
-        <button class="btn btn-danger" onclick="deleteOrder(${order.id})">Eliminar</button>
-      </div>
-    </div>
-  `).join('')}</div>`;
-}
-
-function renderSummary(doneOrders){
-  const total = doneOrders.reduce((s,o)=>s + Number(o.total || 0),0);
-  document.getElementById('sumOrders').textContent = doneOrders.length;
-  document.getElementById('sumTotal').textContent = money(total);
-
-  const products = {};
-  doneOrders.forEach(o=>{
-    o.items.forEach(i=>{
-      const name = i.name;
-      if(!products[name]) products[name] = {qty:0,total:0};
-      products[name].qty += Number(i.qty || 0);
-      products[name].total += Number(i.qty || 0) * Number(i.price || 0);
-    });
-  });
-
-  const rows = Object.entries(products).sort((a,b)=>b[1].qty-a[1].qty);
-  document.getElementById('productSummary').innerHTML = rows.length
-    ? rows.map(([name,info])=>`
-        <div class="product-row">
-          <span>${escapeHTML(name)} · ${info.qty} pz</span>
-          <b>${money(info.total)}</b>
-        </div>
-      `).join('')
-    : '<div class="empty">Aún no hay ventas entregadas.</div>';
-}
-
-function clearDay(){
-  if(confirm('¿Cerrar día y borrar todos los pedidos guardados?')){
-    localStorage.removeItem(STORAGE_KEY);
-    renderAll();
-    showToast('Día cerrado');
-  }
-}
-
-function escapeHTML(value){
-  return String(value).replace(/[&<>'"]/g, ch => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
-  }[ch]));
-}
-
-renderAll();
+let html5QrCode=null,currentOrder=null,ordersCache=[];
+const firebaseConfig={apiKey:"AIzaSyDGAwc5UjFdoqXhGxxOk74D5Q2KgDYmDOU",authDomain:"itacatezac.firebaseapp.com",projectId:"itacatezac",storageBucket:"itacatezac.firebasestorage.app",messagingSenderId:"385075648673",appId:"1:385075648673:web:f90c815cdb37936096f8e0"};
+firebase.initializeApp(firebaseConfig);const db=firebase.firestore();
+function money(n){return '$'+Number(n||0).toLocaleString('es-MX')}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');renderAll()}
+async function startScanner(){if(html5QrCode)return;html5QrCode=new Html5Qrcode('reader');document.getElementById('startBtn').style.display='none';document.getElementById('stopBtn').style.display='block';try{await html5QrCode.start({facingMode:'environment'},{fps:10,qrbox:{width:250,height:250}},onScanSuccess)}catch(err){showToast('No se pudo abrir la cámara');document.getElementById('startBtn').style.display='block';document.getElementById('stopBtn').style.display='none';html5QrCode=null}}
+async function stopScanner(){if(html5QrCode){try{await html5QrCode.stop()}catch(e){}try{html5QrCode.clear()}catch(e){}html5QrCode=null}document.getElementById('startBtn').style.display='block';document.getElementById('stopBtn').style.display='none'}
+function onScanSuccess(decodedText){let data=null;try{data=JSON.parse(decodedText)}catch(e){showToast('QR no válido');return}if(!data||data.tipo!=='itacate_pedido'||!Array.isArray(data.items)){showToast('Este QR no es un pedido');return}currentOrder=data;renderPreview(data);stopScanner()}
+function renderPreview(order){document.getElementById('previewCard').style.display='block';document.getElementById('previewContent').innerHTML=`<div class="order-head"><div><div class="folio">${escapeHTML(order.folio||'SIN FOLIO')}</div><div class="muted">${escapeHTML(order.hora||'')}</div></div><div class="mesa">${money(order.total)}</div></div><div class="items">${order.items.map(i=>`<div class="item"><span>${Number(i.qty)}x ${escapeHTML(i.name)}</span><b>${money(Number(i.price)*Number(i.qty))}</b></div>`).join('')}</div><div class="total"><span>Total</span><span>${money(order.total)}</span></div>`}
+async function saveScannedOrder(){if(!currentOrder)return;const mesa=document.getElementById('mesaInput').value.trim();if(!mesa){showToast('Agrega la mesa');return}try{const folio=currentOrder.folio||('ITC-'+Date.now());const ref=db.collection('pedidos').doc(folio);const exists=await ref.get();if(exists.exists){showToast('Ese pedido ya está guardado');return}await ref.set({folio,mesa,items:currentOrder.items,total:Number(currentOrder.total||0),hora:currentOrder.hora||new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}),estado:'pendiente',createdAt:new Date().toISOString(),dia:new Date().toISOString().slice(0,10)});currentOrder=null;document.getElementById('previewCard').style.display='none';document.getElementById('mesaInput').value='';showToast('Pedido guardado en Firebase')}catch(error){console.error(error);showToast('Error al guardar pedido')}}
+async function markDone(folio){try{await db.collection('pedidos').doc(folio).update({estado:'entregado',doneAt:new Date().toISOString()});showToast('Pedido entregado')}catch(error){console.error(error);showToast('Error al actualizar')}}
+async function deleteOrder(folio){if(!confirm('¿Eliminar este pedido?'))return;try{await db.collection('pedidos').doc(folio).delete();showToast('Pedido eliminado')}catch(error){console.error(error);showToast('Error al eliminar')}}
+function listenOrders(){db.collection('pedidos').onSnapshot(snapshot=>{ordersCache=[];snapshot.forEach(doc=>{const data=doc.data();if(data.items&&Array.isArray(data.items)){ordersCache.push({id:doc.id,...data})}});ordersCache.sort((a,b)=>String(b.createdAt||'').localeCompare(String(a.createdAt||'')));renderAll()},error=>{console.error(error);showToast('Error al conectar Firebase')})}
+function renderAll(){const pending=ordersCache.filter(o=>o.estado==='pendiente');const done=ordersCache.filter(o=>o.estado==='entregado');document.getElementById('pendingCount').textContent=pending.length;renderOrders('pendingList',pending,true);renderOrders('doneList',done,false);renderSummary(done)}
+function renderOrders(targetId,orders,isPending){const target=document.getElementById(targetId);if(!orders.length){target.innerHTML='<div class="empty">No hay pedidos aquí.</div>';return}target.innerHTML=`<div class="orders-grid">${orders.map(order=>`<div class="card"><div class="order-head"><div><div class="folio">${escapeHTML(order.folio)}</div><div class="muted">${escapeHTML(order.hora||'')}</div></div><div class="mesa">Mesa ${escapeHTML(order.mesa)}</div></div><div class="items">${order.items.map(i=>`<div class="item"><span>${Number(i.qty)}x ${escapeHTML(i.name)}</span><b>${money(Number(i.price)*Number(i.qty))}</b></div>`).join('')}</div><div class="total"><span>Total</span><span>${money(order.total)}</span></div><div class="actions">${isPending?`<button class="btn btn-primary" onclick="markDone('${escapeAttr(order.id)}')">Listo</button>`:`<button class="btn btn-secondary" disabled>Entregado</button>`}<button class="btn btn-danger" onclick="deleteOrder('${escapeAttr(order.id)}')">Eliminar</button></div></div>`).join('')}</div>`}
+function renderSummary(doneOrders){const total=doneOrders.reduce((s,o)=>s+Number(o.total||0),0);document.getElementById('sumOrders').textContent=doneOrders.length;document.getElementById('sumTotal').textContent=money(total);const products={};doneOrders.forEach(o=>{o.items.forEach(i=>{const name=i.name;if(!products[name])products[name]={qty:0,total:0};products[name].qty+=Number(i.qty||0);products[name].total+=Number(i.qty||0)*Number(i.price||0)})});const rows=Object.entries(products).sort((a,b)=>b[1].qty-a[1].qty);document.getElementById('productSummary').innerHTML=rows.length?rows.map(([name,info])=>`<div class="product-row"><span>${escapeHTML(name)} · ${info.qty} pz</span><b>${money(info.total)}</b></div>`).join(''):'<div class="empty">Aún no hay ventas entregadas.</div>'}
+async function clearDay(){if(!confirm('¿Cerrar día y borrar todos los pedidos?'))return;try{const snapshot=await db.collection('pedidos').get();const batch=db.batch();snapshot.forEach(doc=>{if(doc.id!=='test')batch.delete(doc.ref)});await batch.commit();showToast('Día cerrado')}catch(error){console.error(error);showToast('Error al cerrar día')}}
+function escapeHTML(value){return String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]))}
+function escapeAttr(value){return String(value).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+listenOrders();
 </script>
 </body>
 </html>
+
